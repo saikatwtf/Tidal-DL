@@ -50,7 +50,8 @@ class AuthedUsers(DataBaseHandle):
         self.collection = self._db.authed_users
 
     def set_users(self, var_value):
-        self.collection.insert_one({"uid": var_value})
+        if not self.collection.find_one({"uid": var_value}):
+            self.collection.insert_one({"uid": var_value})
 
     def get_users(self):
         docs = list(self.collection.find())
@@ -64,7 +65,8 @@ class AuthedAdmins(DataBaseHandle):
         self.collection = self._db.authed_admins
 
     def set_admins(self, var_value):
-        self.collection.insert_one({"uid": var_value})
+        if not self.collection.find_one({"uid": var_value}):
+            self.collection.insert_one({"uid": var_value})
 
     def get_admins(self):
         docs = list(self.collection.find())
@@ -78,7 +80,8 @@ class AuthedChats(DataBaseHandle):
         self.collection = self._db.authed_chats
 
     def set_chats(self, var_value):
-        self.collection.insert_one({"uid": var_value})
+        if not self.collection.find_one({"uid": var_value}):
+            self.collection.insert_one({"uid": var_value})
 
     def get_chats(self):
         docs = list(self.collection.find())
@@ -90,7 +93,10 @@ class MusicDB(DataBaseHandle):
             dburl = Config.DATABASE_URL
         super().__init__(dburl)
         self.collection = self._db.music_table
-        self.collection.create_index("msg_id", unique=True)
+        try:
+            self.collection.create_index("msg_id", unique=True)
+        except:
+            pass
 
     def set_music(self, msg_id, title, artist, track_id, type):
         try:
@@ -108,8 +114,12 @@ class MusicDB(DataBaseHandle):
         docs = list(self.collection.find({"title": title}))
         for doc in docs:
             if doc.get("artist") == artist:
-                if track_id and doc.get("track_id") == int(track_id):
-                    return doc["msg_id"], doc["artist"]
+                if track_id:
+                    try:
+                        if doc.get("track_id") == int(track_id):
+                            return doc["msg_id"], doc["artist"]
+                    except:
+                        pass
                 if doc.get("type") == type:
                     return doc["msg_id"], doc["artist"]
         return None, None

@@ -166,9 +166,30 @@ class UserSettings(DataBaseHandle):
             return jdata.get(var_name)
         return None
 
+class BroadcastUsers(DataBaseHandle):
+    def __init__(self, dburl=None):
+        if dburl is None:
+            dburl = Config.DATABASE_URL
+        super().__init__(dburl)
+        self.collection = self._db.broadcast_users
+
+    def add_user(self, user_id):
+        self.collection.update_one(
+            {"user_id": user_id},
+            {"$set": {"user_id": user_id}},
+            upsert=True
+        )
+
+    def get_all_users(self):
+        return self.collection.find()
+
+    def total_users_count(self):
+        return self.collection.count_documents({})
+
 set_db = TidalSettings()
 users_db = AuthedUsers()
 admins_db = AuthedAdmins()
 chats_db = AuthedChats()
 music_db = MusicDB()
 user_settings = UserSettings()
+broadcast_db = BroadcastUsers()

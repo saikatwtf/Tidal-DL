@@ -7,10 +7,14 @@ from bot.helpers.buttons.help_buttons import *
 from bot.helpers.utils.auth_check import get_chats
 from bot.helpers.utils.auth_check import check_id, get_chats
 from bot.helpers.utils.media_search import index_audio_files
-from bot.helpers.database.mongo_impl import users_db, admins_db, chats_db
+from bot.helpers.database.mongo_impl import users_db, admins_db, chats_db, broadcast_db
 
 @Client.on_message(filters.command(CMD.START))
 async def start(bot, update):
+    try:
+        broadcast_db.add_user(update.from_user.id)
+    except:
+        pass
     msg = await bot.send_message(
         chat_id=update.chat.id,
         text=lang.select.INIT_MSG.format(

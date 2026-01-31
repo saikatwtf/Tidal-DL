@@ -30,6 +30,8 @@ class CMD(object):
     SHELL = ["shell", f"shell@{bot}"]
     # To index audio files in a channel
     INDEX = ["index", f"index@{bot}"]
+    # Broadcast message to all users
+    BROADCAST = ["broadcast", f"broadcast@{bot}"]
 
 USER = Client(
     name="TidalDlUser",

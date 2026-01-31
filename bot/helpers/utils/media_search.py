@@ -2,7 +2,7 @@ from pyrogram import enums
 from bot import Config, USER, LOGGER
 from bot.helpers.translations import lang
 from bot.helpers.tidal_func.enums import Type
-from bot.helpers.database.postgres_impl import music_db
+from bot.helpers.database.mongo_impl import music_db
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 

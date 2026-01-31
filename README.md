@@ -28,7 +28,7 @@ Use the below button to deploy the bot in Koyeb.
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/vinayak-7-0-3/Tidal-DL-Telegram&branch=main&name=tidal-dl-tg&run_command=python%20-m%20bot&env[TG_BOT_TOKEN]=&env[APP_ID]=&env[API_HASH]=&env[USER_SESSION]=&env[AUTH_CHAT]=&env[ADMINS]=&env[ALLOW_DUMP]=False&env[IS_BOT_PUBLIC]=True&env[TIDAL_REGION]=IN&env[TIDAL_SEARCH_LIMIT]=10&env[BOT_USERNAME]=&env[OWNER_USERNAME]=&env[DATABASE_URL]=&env[ENV]=True)
 
 - Fill all the Variables (In Environment Variable Section)
-- For Database URL use Heroku Postgres or ElephantSQL
+- For Database URL use MongoDB Atlas or local MongoDB instance
 
 ## Deploy Locally
 Rename example.env to .env and fill all those required variables.
@@ -38,7 +38,7 @@ virtualenv -p python3 VENV
 pip install -r requirements.txt
 python -m bot
 ```
-- For Database URL use Heroku Postgres (if on Heroku) or ElephantSQL
+- For Database URL use MongoDB Atlas or local MongoDB instance
 
 ## Variables Details
 **-> Required variables**
@@ -53,7 +53,7 @@ python -m bot
 - `TIDAL_REGION` - Country code for Tidal Song search. (In international format eg:IN)
 - `TIDAL_SEARCH_LIMIT` - Limit the number of search results.
 - `BOT_USERNAME` - Username of your bot.
-- `DATABASE_URL` - Postgres Database URL
+- `DATABASE_URL` - MongoDB Connection URI (e.g., mongodb://localhost:27017/tidalbot or MongoDB Atlas URI)
 
 **-> Optional variables**
 - `LOG_CHANNEL_ID` - Group/Channel ID where bot stores all the downloaded files (Mandatory if set ALLOW_DUMP = True)

@@ -1,7 +1,7 @@
 import aiohttp
 from bot import Config, LOGGER
 from bot.helpers.translations import lang
-from bot.helpers.database.postgres_impl import TidalSettings
+from bot.helpers.database.mongo_impl import TidalSettings
 
 set_db = TidalSettings()
 

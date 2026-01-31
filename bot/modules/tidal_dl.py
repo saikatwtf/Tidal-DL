@@ -6,7 +6,7 @@ from bot.helpers.translations import lang
 from bot.helpers.utils.auth_check import check_id
 from bot.helpers.utils.check_link import check_link
 from bot.helpers.tidal_func.events import checkLogin, start
-from bot.helpers.database.postgres_impl import user_settings
+from bot.helpers.database.mongo_impl import user_settings
 
 @Client.on_message(filters.command(CMD.DOWNLOAD))
 async def download_tidal(bot, update):

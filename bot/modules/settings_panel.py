@@ -5,7 +5,7 @@ from bot.helpers.utils.auth_check import check_id
 from bot.helpers.utils.auth_check import get_chats
 from bot.helpers.buttons.settings_buttons import *
 from bot.helpers.tidal_func.settings import SETTINGS
-from bot.helpers.database.postgres_impl import set_db, user_settings
+from bot.helpers.database.mongo_impl import set_db, user_settings
 
 import bot.helpers.tidal_func.apikey as apiKey
 

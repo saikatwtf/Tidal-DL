@@ -1,6 +1,6 @@
 from bot import Config
 from bot.helpers.translations import lang
-from bot.helpers.database.postgres_impl import users_db, admins_db, chats_db, user_settings
+from bot.helpers.database.mongo_impl import users_db, admins_db, chats_db, user_settings
 
 allowed_chats = []
 allowed_users = []

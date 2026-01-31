@@ -14,7 +14,7 @@ import base64
 
 from bot.helpers.tidal_func.enums import *
 
-from bot.helpers.database.postgres_impl import set_db
+from bot.helpers.database.mongo_impl import set_db
 
 
 class Settings(aigpy.model.ModelBase):

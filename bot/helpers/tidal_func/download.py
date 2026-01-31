@@ -15,7 +15,7 @@ from bot import LOGGER
 from config import Config
 from bot.helpers.translations import lang
 from bot.helpers.utils.media_search import check_duplicate
-from bot.helpers.database.postgres_impl import music_db, user_settings
+from bot.helpers.database.mongo_impl import music_db, user_settings
 
 from bot.helpers.tidal_func.paths import *
 from bot.helpers.tidal_func.tidal import *

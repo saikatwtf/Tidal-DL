@@ -2,7 +2,7 @@ import time
 import aigpy
 from bot import LOGGER
 from bot.helpers.translations import lang
-from bot.helpers.database.postgres_impl import TidalSettings
+from bot.helpers.database.mongo_impl import TidalSettings
 from bot.helpers.buttons.settings_buttons import tidal_auth_set
 from bot.helpers.utils.media_search import check_duplicate
 
